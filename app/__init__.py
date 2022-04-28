@@ -1,6 +1,16 @@
-from flask import appcontext_popped
-import flask
+
 from flask import Flask
+from .config import DevConfig
+
+# initializing the application
+app = Flask(__name__, instance_relative_config=True)
+
+# Setting up configurations
+app.config.from_object(DevConfig)
+app.config.from_pyfile('config.py')
+
+
+
+
 from app import views
 
-app = Flask(__name__)
